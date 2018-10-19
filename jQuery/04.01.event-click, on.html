@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 100px;
+            height: 100px;
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    $('.container').get(0).addEventListener('click', function() {
+        console.log('这是事件捕获阶段')
+    }, true)
+
+    $('.container').get(0).addEventListener('click', function() {
+        console.log('这是事件冒泡阶段')
+    }, false)
+
+    $('.container').on('click', function() {
+        console.log('on -> click')
+    })
+
+    $('.container').on('click', function() {
+        console.log('on -> click1')
+    })
+
+    $('.container').on('click', function() {
+        console.log('on -> click2')
+    })
+
+    $('.container').click(function() {
+        console.log('click')
+    })
+    $('.container').click(function() {
+        console.log('click2')
+    })
+    $('.container').click(function() {
+        console.log('click3')
+    })
+
+    $('.container').get(0).addEventListener('click', function() {
+        console.log('这是事件捕获阶段')
+    }, true)
+
+    $('.container').get(0).addEventListener('click', function() {
+        console.log('这是事件冒泡阶段')
+    }, false)
+</script>
+</html>

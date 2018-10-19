@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件冒泡</title>
+    <style>
+        #a{
+            width:200px;
+            height:200px;
+            background:green;
+        }
+        #p{
+            height:100px;
+            width:100px;
+            background:maroon;
+        }
+    </style>
+</head>
+<body>
+    <div id="a">a
+        <p id="p">p<p>
+    </div>
+</body>
+<script>
+document.getElementById('p').addEventListener('click',function(e){
+    console.log('p冒泡');
+},false);
+document.getElementById('a').addEventListener('click',function(e){
+    console.log('a冒泡');
+},false);
+
+
+document.getElementById('p').addEventListener('click',function(e){
+    console.log('p捕获');
+},true);
+document.getElementById('a').addEventListener('click',function(e){
+    console.log('a捕获');
+},true);
+
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dynamic Route</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>Dynamic Route</h4>
+        <ul>
+            <li><router-link to="/user/walter">User Walter</router-link></li>
+            <li><router-link to="/user/alice">User Alice</router-link></li>
+        </ul>
+        <hr>
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    const userComponent = {
+        name: 'usercomponent',
+        template: `<div>Hello, User -> {{$route.params.username}}</div>`,
+        created () {
+            console.log(this.$route)
+        }
+    }
+    const routes = [{
+        name: 'username',
+        path: '/user/:username',
+        component: userComponent
+    }]
+    const vuerouter = new VueRouter({
+        routes: routes
+    })
+
+    const vm = new Vue({
+        el: '#app',
+        router: vuerouter
+    })
+
+    console.log(vm)
+</script>
+</html>

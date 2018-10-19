@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alert Index</title>
+</head>
+<body>
+    <ul id="container">
+        <li>first</li>
+        <li>second</li>
+        <li>third</li>
+    </ul>
+</body>
+<script>
+const oLi = document.querySelectorAll('li');
+const aLi = Array.from(oLi);
+aLi.forEach(function(item, index) {
+    item.onclick = function() {
+        console.log(item.innerHTML);
+    }
+})
+</script>
+</html>
+
+
+

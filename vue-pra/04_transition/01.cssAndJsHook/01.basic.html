@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01.cssAndJsHook</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+        div {
+            width: 300px;
+            position: absolute;
+        }
+        .fade-leave {
+            background: red;
+            left: 5px;
+        }
+        .fade-leave-active {
+            opacity: 1;
+            transition: all 2s;
+            background: yellow;
+            left: 10px;
+        }
+        /* .fade-leave-to {
+            opacity: 0.5;
+            background: blue;
+            left: 15px;
+        } */
+
+        .fade-enter {
+            opacity: 0;
+            background: red;
+        }
+        .fade-enter-active {
+            background: rgb(252, 197, 48);
+            transition: all 2s;
+        }
+        /* .fade-enter-to {
+            background: rgb(20, 189, 48);
+            opacity: 1;
+            transition: all 2s;
+        } */
+        
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+        <transition 
+            name="fade"
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            v-on:enter-cancelled="enterCancelled"
+
+            v-on:before-leave="beforeLeave"
+            v-on:leave="leave"
+            v-on:after-leave="afterLeave"
+            v-on:leave-cancelled="leaveCancelled"
+        >
+            <p v-if="show">hello</p>
+        </transition>
+    </div>
+</body>
+<script src="01.basic.js"></script>
+
+</html>

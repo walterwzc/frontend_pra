@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="" id="container">container</div>
+    <div class="" id="container2">container2</div>
+    <div class="" id="container3">container3</div>
+    <div class="" id="container4">container4</div>
+    <div class="" id="container5">container5</div>
+</body>
+<script>
+var container = document.getElementById('container');
+var container2 = document.getElementById('container2');
+var container3 = document.getElementById('container3');
+var container4 = document.getElementById('container4');
+var container5 = document.getElementById('container5');
+
+var innerHTML = '我是window的html';
+
+var events = {
+    innerHTML: '我是events',
+
+    getHtml: function() {
+        console.log('getHtml');
+        console.log(this);
+        console.log(this.innerHTML);
+    },
+
+    setFunc: function() {
+        console.log('setFunc');
+        console.log(this);
+        return this.getHtml;
+    },
+
+    proxy: function() {
+        console.log('proxy');
+        console.log('proxy -> outter');
+        console.log(this);
+        var self = this;
+        return function() {
+            console.log('proxy');
+            console.log('proxy -> inner');
+            console.log(this);
+            self.getHtml()
+        }
+    }
+}
+
+// // 函数之中的this， 指向触发事件的对象；
+// container.onclick = events.getHtml;
+
+// // events.setFunc() 之中的this 本身指向events对象本身，所以this.getHtml 可以指向对象的方法；
+// container2.onclick = events.setFunc();
+
+// // 使用 self 将this的指向，保留在了 events 之中；
+// container3.onclick = events.proxy();
+
+// // 因为在外层又嵌套了一层函数， 所以虽然外层函数的this指向事件对象，但是里面的函数并没有改变。
+// // 在函数之中执行函数的this，指向window
+// container4.onclick = function() {
+//     // window.setTimeout(events.setFunc(), 0);
+//     events.setFunc()();
+// }
+
+// 一个迷惑人的地方，其实只要是events来调用这个方法，那么在这个方法之中第一层的this总是指向events的，return 的函数this指向哪里，则看是谁进行了触发。
+container5.onclick = function() {
+    window.setTimeout(events.proxy(), 0);
+}
+
+// 也相当于在函数之中的函数
+// window.setTimeout(events.getHtml);
+
+// 如果不使用 setTimeout，则明显 getHtml之中的this 指向 events；
+// console.log(events.getHtml());
+
+</script>
+</html>

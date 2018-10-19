@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02.构造函数继承</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Animal(name) {
+        this.name = name;
+        this.type = 'ann1'
+        this.sleep = function() {
+            console.log(this);
+            console.log('sleep');
+        }
+    }
+
+    Animal.prototype.pname = 'prototype_name';
+
+    Animal.prototype.eat = function() {
+        console.log('eat' + " : " + this.name);
+    }
+
+    function Cat(name, age) {
+        Animal.apply(this, arguments);
+        this.age = age;
+    }
+
+    const c1 = new Cat('jiafeicat', 1);
+    console.log(c1.name);
+    console.log(c1.age);
+    console.log(c1.type);
+    console.log(c1.pname);
+    c1.sleep();
+
+    // c1.eat();
+
+    console.log(c1 instanceof Animal);
+    console.log(c1 instanceof Cat);
+
+
+</script>
+</html>

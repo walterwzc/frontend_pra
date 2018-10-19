@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+    @keyframes aslide {
+        0% {
+            margin-left: 10px;
+        }
+        100% {
+            margin-left: 100px;
+        }
+    }
+        .red {background-color: red; width: 100px; height: 100px;}
+        .blue {background-color: blue; width: 100px; height: 100px;}
+        .v-leave { margin-top: 50px; }
+        .v-leave-active {  transition: all 3s; animation: aslide 5s;}
+        .v-leave-to { margin-top: 100px;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <transition type="transition" > -->
+        <transition>
+            <div class="red" v-show="show"></div>
+        </transition>
+        <br>
+        <!-- <transition type="animation" > -->
+        <transition>
+            <div class="blue" v-show="show"></div>
+        </transition>
+        <button v-on:click="change">button</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            show: true
+        },
+        methods: {
+            change: function(){
+                this.show = !this.show;
+            }
+        }
+    });
+    </script>
+</html>

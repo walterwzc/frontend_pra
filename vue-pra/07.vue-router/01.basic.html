@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Router Basic</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>Vue Router</h4>
+        <p>
+            <router-link to="/foo">Link to Foo</router-link>
+            <router-link to="/bar">Link to Bar</router-link>
+        </p>
+        <hr>
+        <div style="background: #ddd;">Blow area will be changed:</div>
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    const Foo = {
+        template: `<div>Foo Component</div>`
+    };
+    
+    const Bar = {
+        template: `<div>Bar Component</div>`
+    };
+
+    const routers = [
+        {path: '/foo', component: Foo},
+        {path: '/bar', component: Bar}
+    ];
+
+    const vuerouter = new VueRouter({
+        routes: routers
+    })
+
+    const vm = new Vue({
+        el: '#app',
+        router: vuerouter
+    })
+</script>
+</html>

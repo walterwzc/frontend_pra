@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Slot</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+
+    </div>
+</body>
+<!-- <script src="01.basic.js"></script> -->
+<script>
+// const mixin = {
+//     created () {
+//         this.hello();
+//     },
+//     methods: {
+//         hello() {
+//             console.log('Hello')
+//         }
+//     }
+// }
+
+// const Component = Vue.extend({
+//     mixins: [mixin]
+// })
+
+// const component = new Component();
+
+Vue.mixin({
+    beforeMount() {
+        console.log('beforeMount');
+    },
+    mounted() {
+        console.log('mounted');
+    }
+})
+
+
+const vm = new Vue({
+    el: '#demo',
+    data: {
+        show: true
+    }
+})
+
+</script>
+</html>

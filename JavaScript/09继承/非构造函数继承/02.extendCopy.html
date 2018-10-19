@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>extend copy</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const Animal = {
+        name: 'animal',
+        age: 12
+    }
+
+    function extendCopy(Father, Son) {
+        for (let attr in Father) {
+            Son[attr] = Father[attr];
+        }
+    }
+
+    const sonObj = {};
+
+    extendCopy(Animal, sonObj);
+
+    console.log(sonObj);
+</script>
+</html>

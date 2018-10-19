@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Slot</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <basic-layout>
+            <template slot="headerslot">
+                <h2>This is header part</h2>
+            </template>
+            <template>
+                <div>Main body</div>
+            </template>
+            <template slot="footerslot">
+                <div>Footer Slot part</div>
+            </template>
+        </basic-layout>
+    </div>
+</body>
+<script src="01.basic.js"></script>
+</html>

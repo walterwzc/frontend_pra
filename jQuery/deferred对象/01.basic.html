@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>basic</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    const deferred = $.Deferred();
+    console.log(deferred);
+    setTimeout(function() {
+        deferred.reject();
+    }, 1000);
+
+    deferred.done(function() {
+        console.log('Timer is finished!');
+    }).fail(function() {
+        console.log('Timer is failed');
+    }).catch(function() {
+        console.log('failed in catch');
+    }).then(function() {
+        console.log('failed in then');
+    });
+</script>
+</html>

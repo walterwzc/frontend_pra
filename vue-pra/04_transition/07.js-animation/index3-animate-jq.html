@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js animation</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+
+<body>
+    <div id="example-4">
+        <button @click="show = !show">
+            Toggle
+        </button>
+        <transition
+            appear
+            v-on:enter="enter" 
+            v-on:leave="leave" 
+            v-bind:css="false"
+        >
+            <p v-if="show">
+                Demo
+            </p>
+        </transition>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: '#example-4',
+        data: {
+            show: true
+        },
+        methods: {
+            enter: (el, done) => {
+                $(el)
+                    .css('opacity', 0)
+                    .animate({ opacity: 1, fontSize: '100px' }, 1000, done)
+            },
+            leave: (el, done) => {
+                $(el).animate({ opacity: 0, fontSize: '0px' }, 1000, done)
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01.opacity-with-css</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+        .opacity-leave-active, .opacity-enter-active {
+            transition: all 1s ease;
+        }
+
+        .opacity-leave-to, .opacity-enter  {
+            opacity: 0;
+        }
+
+        .opacity-leave, .opacity-enter-to  {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="isShow = !isShow">toggle</button>
+        <transition 
+            name="opacity"
+        >
+            <p v-show="isShow" class="word">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+        </transition>
+    </div>
+</body>
+<script>
+const vm = new Vue({
+    el: '#app',
+    data() {
+        return {
+            isShow: true
+        }
+    }
+})
+
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>replace test</title>
+</head>
+<body>
+    
+</body>
+<script>
+let result = 'href="www.xxx.com"'.replace(/\".*?(?=\")"/g, function(matchStr, param2, param3, param4, param5, param6) {
+    console.log(matchStr, param2, param3, param4, param5, param6);
+    return matchStr;
+});
+
+console.log(result);
+</script>
+</html>

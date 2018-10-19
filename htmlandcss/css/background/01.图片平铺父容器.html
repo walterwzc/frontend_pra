@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片平铺父容器</title>
+    <style>
+        .container1 {
+            width: 158px;
+            height: 166px;
+            overflow: hidden;
+        }
+
+        .container1 > img {
+            width: 158px;
+        }
+
+        .container2 {
+            width: 158px;
+            height: 166px;
+            background-image: url('./pics/half-body.jpeg');
+            /* no-repeat top center */
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <img src="./pics/half-body.jpeg" alt="">
+    </div>
+
+    <hr>
+
+    <div class="container2">
+
+    </div>
+</body>
+</html>

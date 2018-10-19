@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-border>
+        <div style="height: 100px; width: 100px; margin-top: 20px;" v-bcolor></div>
+    </div>
+</body>
+<script>
+    Vue.directive('border', {
+        bind (el) {
+            el.style.border = '1px solid #f00';
+        }
+    })
+
+    const vm = new Vue({
+        el: '#app',
+        directives: {
+            bcolor: {
+                bind (el) {
+                    el.style.backgroundColor = "#ddd";
+                }
+            }
+        }
+    })
+</script>
+</html>

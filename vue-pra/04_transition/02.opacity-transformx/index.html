@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>opacity and transformx</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+        /* 方式一 */
+        /* .bounce-leave-active {
+            opacity: 1;
+            transform: translate(50px);
+            transition: all 1s;
+        }
+
+        .bounce-leave-to {
+            opacity: 0;
+        }
+
+        .bounce-enter {
+            opacity: 0;
+            transform: translate(50px);
+        }
+
+        .bounce-enter-to {
+            transform: translate(0);
+            opacity: 1;
+            transition: all 1s;
+        } */
+
+        /* 方式二： */
+        .bounce-enter-active, .bounce-leave-active {
+            opacity: 1;
+            transition: all 1s ease;
+        }
+
+        .bounce-enter, .bounce-leave-to {
+            transform: translateX(50px);
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="isShow = !isShow">toggle</button>
+        <transition name="bounce">
+            <p v-show="isShow">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+        </transition>
+    </div>
+</body>
+<script>
+const vm = new Vue({
+    el: '#app',
+    data() {
+        return {
+            isShow: true
+        }
+    }
+})
+</script>
+</html>

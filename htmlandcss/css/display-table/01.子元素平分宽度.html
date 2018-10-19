@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01.子元素平分宽度</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        ul {
+            width: 100%;
+            background: rgb(170, 164, 164);
+            height: 150px;
+            display: table;
+        }
+        li {
+            height: 16px;
+            background: rgb(178, 211, 164);
+            display: table-cell;
+            border: 2px solid red;
+            vertical-align: middle;
+        }
+        div {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: rgb(192, 174, 92);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><div>AAAAA</div></li>
+        <li><div>BBBBB</div></li>
+        <li><div>CCCCC</div></li>
+        <li><div>DDDDD</div></li>
+        <li><div>EEEEE</div></li>
+    </ul>
+</body>
+</html>

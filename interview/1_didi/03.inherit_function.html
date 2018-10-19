@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>inherit function</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function inherit1 (A, B) {
+        const aObj = new A();
+        for (let attr in aObj) {
+            // console.log(attr);
+            // console.log(aObj[attr]);
+            // console.log(aObj);
+            B.prototype[attr] = aObj[attr];
+        }
+        return B;
+    }
+    function inherit2 (A, B) {
+        B.prototype = new A();
+        return B;
+    }
+
+    function Animal() {
+        this.type = 'ann1'
+        this.sleep = function() {
+            console.log('sleep');
+        }
+    }
+
+    Animal.prototype.pname = 'prototype_name';
+
+    Animal.prototype.eat = function() {
+        console.log('eat' + " : " + this.name);
+    }
+
+    function Son() {};
+    const SonAnimal = inherit1(Animal, Son);
+
+    const son1 = new Son();
+
+    console.log(son1.type);
+    console.log(son1.pname);
+
+    son1.sleep();
+    son1.eat();
+
+    console.log('------');
+    console.log(son1);
+
+    // console.log(SonAnimal);
+    // const son1 = new SonAnimal();
+    // console.log(son1);
+</script>
+</html>

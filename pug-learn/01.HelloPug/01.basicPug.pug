@@ -1,0 +1,51 @@
+doctype html
+
+-
+    var str = "hello";
+    var arr = [11, 22, 33, 44, 55];
+    var obj = {a: 111, b: 222};
+    var title = 'Group Name';
+
+html(lang="en")
+    head
+        title= 'Hello Pug'
+        link(type="text/css" rel="stylesheet" href="./styles/style.css")
+
+        script(type='text/javascript').
+            let flag = false;
+            if (flag) {
+                console.log('this is true');
+            } else {
+                console.log('this is false');
+            }
+
+    body
+        -var name = 'walter'
+        -var age = 18
+        -var htmlData ='<strong>abcdfg</strong>'
+        -var imgUrl = './pics/half-body.jpeg'
+        mixin hello
+            p Hello Pug
+        p
+            | 1111<strong>some number</strong>
+            | 2222
+            | 4444
+        p #{str}
+        p !{htmlData}
+        p #{htmlData}
+
+        ul
+            each item in arr
+                li= item
+
+        .container(style=`width: 158px;height: 166px; background-image: url(${imgUrl}); background-size: cover;background-position: top center;`)
+
+
+    script(type='text/javascript').
+        console.log("#{str}")
+        console.log("#{imgUrl}");
+
+    script window.groupName = '!{title}'
+    script console.log(groupName);
+
+

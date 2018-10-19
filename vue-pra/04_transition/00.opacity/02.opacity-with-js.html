@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02.opacity-with-js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="isShow = !isShow">toggle</button>
+        <transition 
+            :css="false"
+            v-on:before-leave="beforeLeave"
+            v-on:leave="leave"
+            v-on:after-leave="afterLeave"
+            v-on:leave-cancelled="leaveCancelled"
+
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            v-on:enter-cancelled="enterCancelled"
+        >
+            <p v-show="isShow" class="word">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+        </transition>
+    </div>
+</body>
+<script>
+const vm = new Vue({
+    el: '#app',
+    data() {
+        return {
+            isShow: true
+        }
+    },
+    methods: {
+        // leave
+        beforeLeave(el) {
+            console.log('beforeLeave');
+            el.style.opacity = 1;
+        },
+        leave(el, done) {
+            console.log('leave');
+            console.log(el.style.opacity);
+            el.style.opacity = 0;
+            el.style.transition = 'opacity 1s ease';
+            // setTimeout(function() {
+            //     console.log('run leave setTimeout');
+            //     console.log('the opacity is :' + el.style.opacity);
+            //     if (el.style.opacity == 0) {
+            //         console.log('done');
+            //         done();
+            //     }
+            // }, 1100);
+        },
+        afterLeave(el) {
+            console.log('afterLeave');
+            el.style.opacity = 0;
+        },
+        leaveCancelled(el) {
+            console.log('leaveCancelled');
+        },
+
+        // enter
+        beforeEnter(el) {
+            console.log('beforeEnter');
+            el.style.opacity = 0;
+        },
+        enter(el, done) {
+            console.log('enter');
+            el.style.opacity = 1;
+            el.style.transition = 'opacity 1s ease';
+            // setTimeout(function() {
+            //     console.log('run enter setTimeout');
+            //     console.log('the opacity is :' + el.style.opacity);
+            //     if (el.style.opacity == 1) {
+            //         console.log('done');
+            //         done();
+            //     }
+            // }, 1100);
+        },
+        afterEnter(el) {
+            console.log('afterEnter');
+            // el.style.opacity = 1;
+        },
+        enterCancelled(el) {
+            console.log('enterCancelled');
+        }
+    }
+})
+
+</script>
+</html>

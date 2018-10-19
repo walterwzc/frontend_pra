@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic BFC</title>
+    <style>
+        .container1 {
+            background: #ddd;
+            clear: both;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background: rgb(247, 155, 155);
+
+            margin-bottom: 20px;
+            /* border-bottom: 1px solid red; */
+            /* float: left; */
+            
+        }
+
+        .box2 {
+            /* border-top: 1px solid blue; */
+            width: 100px;
+            height: 100px;
+            background: rgb(190, 204, 114);
+
+            margin-top: 40px;
+            /* float: left; */
+        }
+
+        .container2 {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <div class="box1"></div>
+        <div class="container2">
+            <div class="box2"></div>
+        </div>
+    </div>
+</body>
+</html>

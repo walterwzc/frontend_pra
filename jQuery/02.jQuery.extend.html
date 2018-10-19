@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>AAA</li>
+            <li>BBB</li>
+            <li>CCC</li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    obj1 = {name: 'walter', age: 18, sex: 'man', teacher: {name: 'Lili', age: 21, sex: 'woman'}}
+    obj2 = {grade: 1, email: 'www@com', tall: 170, son: {name: 'Abbe', weight: 111}}
+
+    
+    const mergeObj = $.extend(true, {}, obj1, obj2)
+
+    console.log(mergeObj)
+
+    obj1.teacher.name = 'Kingggg'
+    obj2.son.name = 'change@ww.com'
+
+    console.log(mergeObj)
+</script>
+</html>

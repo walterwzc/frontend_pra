@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nest Router</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>Nest Router</h4>
+        <ul>
+            <li><router-link to="/">首页</router-link></li>
+            <li><router-link to="/about">关于</router-link></li>
+        </ul>
+        <hr>
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    const HomePage = {
+        template: "<div>This is Home Page</div>"
+    };
+
+    const ChildIndexPage = {
+        template: "<div>Children Index Page Children Index Page Children Index Page</div>"
+    }
+
+    const IntroducePage = {
+        template: "<div>Introduing Introduing Introduing Introduing</div>"
+    }
+
+    const PicturePage = {
+        template: "<div>Picture Picture Picture Picture</div>"
+    }
+
+    const AboutPage = {
+        template: `
+            <div>
+                <h3 style="background: #ddd">This is about Page</h3>
+                <ul>
+                    <li><router-link to="/about/introduce">介绍</router-link></li>
+                    <li><router-link to="/about/picture">图片</router-link></li>
+                </ul>
+                <hr>
+                <router-view></router-view>
+            </div>
+        `
+    };
+    const routes = [
+        {
+            path: "/",
+            component: HomePage
+        }, 
+        {
+            path: "/about",
+            component: AboutPage,
+            children: [
+                {
+                    path: '',
+                    component: ChildIndexPage
+                },
+                {
+                    path: "introduce",
+                    component: IntroducePage
+                },
+                {
+                    path: 'picture',
+                    component: PicturePage
+                }
+            ]
+        }
+    ];
+
+    const vuerouter = new VueRouter({
+        routes: routes
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        router: vuerouter
+    });
+</script>
+</html>

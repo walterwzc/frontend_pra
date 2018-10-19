@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<style>
+body {
+    margin: 0;
+    background: #2b5996;
+}
+#earth {
+    width: 20px;
+    height: 20px;
+    background: #ddd;
+    border-radius: 10px;
+    position: absolute;
+}
+
+#sun{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 275px;
+    left: 375px;
+}
+</style>
+<div id="earth"></div>
+<div id="sun"></div>
+<script>
+var r = 180;
+var b = document.getElementById("earth");
+var t = 0;
+var xy = {top: 0, left: 0};
+setInterval(function(){
+    xy.top = 300 - Math.sin(t)* r;
+    xy.left = 400 - Math.cos(t)* r;
+    b.setAttribute("style", 'top: ' + xy.top + 'px; left: ' + xy.left + 'px');
+    t += 0.01;
+},20);
+</script>

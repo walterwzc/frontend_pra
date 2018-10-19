@@ -1,0 +1,15 @@
+extends layout.pug
+
+//- block scripts
+    //- script(src="./vue.js")
+    //- script(src="./react.js")
+
+block prepend scripts
+    script(src="./lodash.js")
+
+block append scripts
+    script(src="./angular.js")
+
+block content
+    p this is pug1's content
+    include habit.pug

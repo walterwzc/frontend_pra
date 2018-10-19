@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>指令</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-if="isShow">
+            <div>v-if -> isShow = true;</div>
+        </template>
+        <template v-else>
+            <div style="background: red">v-else -> isShow = false</div>
+        </template>
+        <template v-if="!flag">
+            在 Flag 是false的时候渲染
+        </template><br>
+        <template v-if="list1.length > 0">
+            在List1 有值的时候进行渲染。
+        </template><br>
+        <template v-if="list2.length !== 0">
+            在List2 有值的时候进行渲染。
+        </template><br>
+        <!-- <div v-text="vtext"></div>
+        <hr>
+        <div v-html="vhtml"></div> -->
+    </div>
+</body>
+<script src="03.条件渲染.js"></script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>收缩、展开</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+
+        ul {
+            padding: 10px;
+        }
+
+        .item {
+            padding: 6px 8px;
+            background: #ddd;
+            display: inline-block;
+            margin: 0 8px 8px 0;
+        }
+        button {
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            background: #fff;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in items" class="item">{{item}}</li>
+        </ul>
+        <button v-if="buttonShow" @click='toggleCollapse'>{{buttonWord}}</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                items: ['Dr.Ci:Labo城野医生', '日本', '控油   收敛毛孔', '任何肤质', '面部', '化妆水', '任何肤质', '面部', '化妆水', '商品品牌', '品牌国', '功能', '适合肤质', '适用部位', '产品类型', '商品品牌', '品牌国', '功能'],
+                buttonShow: false,
+                buttonWord: '展开',
+                whetherCollapse: false,
+                ulOriginalHeight: 0,
+                foldHeight: 0
+            };
+        },
+        mounted() {
+            const item = document.querySelector('.item');
+            const oUl = document.querySelector('ul');
+            const oUlOffsetHeight = oUl.offsetHeight;
+            this.ulOriginalHeight = oUlOffsetHeight;
+            const itemOffsetHeight = item.offsetHeight;
+            if (oUlOffsetHeight > itemOffsetHeight * 2) {
+                this.whetherCollapse = true;
+                this.buttonShow = true;
+                console.log(itemOffsetHeight * 2);
+                oUl.style.height = itemOffsetHeight * 2 + 'px';
+                this.foldHeight = itemOffsetHeight * 2;
+                oUl.style.overflow = 'hidden';
+            } else {
+                this.whetherCollapse = false;
+                this.buttonShow = false;
+            }
+        },
+        methods: {
+            toggleCollapse() {
+                console.log('toggle');
+                if (this.whetherCollapse) {
+                    console.log('if');
+                    const oUl = document.querySelector('ul');
+                    oUl.style.height = this.ulOriginalHeight + 'px';
+                    this.whetherCollapse = false;
+                    this.buttonWord = '折叠'
+                } else {
+                    console.log('else');
+                    const oUl = document.querySelector('ul');
+                    this.whetherCollapse = true;
+                    oUl.style.height = this.foldHeight + 'px';
+                    this.buttonWord = '展开'
+                }
+            }
+        }
+    });
+</script>
+</html>

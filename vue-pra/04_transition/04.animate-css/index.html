@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bounce In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="isShow = !isShow">toggle</button>
+        <transition 
+            name="bounce"
+            enter-active-class="animated rotateIn"
+            leave-active-class="animated rotateOut"
+        >
+            <p v-if="isShow">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+        </transition>
+    </div>
+</body>
+<script>
+const vm = new Vue({
+    el: '#app',
+    data() {
+        return {
+            isShow: true
+        }
+    }
+});
+</script>
+</html>

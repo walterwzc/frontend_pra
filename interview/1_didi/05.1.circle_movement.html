@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Circle Movement</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            width: 20px;
+            height: 20px;
+            background: #ddd;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+
+    <!-- <input type="text" id='username' myattr='walter' data-age="18" value=""> -->
+</body>
+<script>
+    function animation(el, start, end, duration) {
+
+    }
+
+    const box1 = document.querySelector('.box1');
+    box1.style.top = 150;
+    box1.style.left = 150;
+
+    const baseMove = Math.PI / 30;
+    let n = 0;
+    let oTop = 0;
+    let oLeft = 0;
+    const radius = 100;
+    setInterval(function() {
+        const oDiv = document.createElement('div');
+        oTop = 150 + Math.cos(baseMove * n) * radius;
+        oLeft = 150 + Math.sin(baseMove * n) * radius;
+        console.log(oTop);
+        console.log(oLeft);
+        oDiv.style.top = oTop + "px";
+        oDiv.style.left = oLeft + "px";
+        n++;
+        document.body.appendChild(oDiv);
+        console.log(n);
+    }, 1000);
+
+</script>
+</html>

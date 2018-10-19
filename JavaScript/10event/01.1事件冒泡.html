@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件冒泡</title>
+    <style>
+        #one {
+            width: 200px;
+            height: 200px;
+            background: rgb(172, 101, 101);
+        }
+
+        #two {
+            width: 150px;
+            height: 150px;
+            background: #ddd
+        }
+
+        #three {
+            width: 100px;
+            height: 100px;
+            background: rgb(160, 207, 106);
+        }
+
+        #four {
+            width: 50px;
+            height: 50px;
+            background: rgb(65, 125, 173);
+        }
+    </style>
+</head>
+
+<body>
+    <div id='one'>
+        <div id='two'>
+            <div id='three'>
+                <div id='four'>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script type='text/javascript'>
+
+// 事件捕获
+
+    var one = document.getElementById('one');
+    var two = document.getElementById('two');
+    var three = document.getElementById('three');
+    var four = document.getElementById('four');
+    
+    one.addEventListener('click', function () {
+        console.log(('one 冒泡'));
+    }, false);
+    two.addEventListener('click', function () {
+        console.log(('two 冒泡'));
+    }, false);
+    three.addEventListener('click', function () {
+        console.log(('three 冒泡'));
+    }, false);
+    four.addEventListener('click', function () {
+        console.log(('four 冒泡'));
+    }, false);
+
+
+    one.addEventListener('click', function () {
+        console.log(('one 捕获'));
+    }, true);
+    two.addEventListener('click', function () {
+        console.log(('two 捕获'));
+    }, true);
+    three.addEventListener('click', function () {
+        console.log(('three 捕获'));
+    }, true);
+    four.addEventListener('click', function () {
+        console.log(('four 捕获'));
+    }, true);
+</script>
+
+</html>

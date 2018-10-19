@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic Exception</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    try{
+        console.log(b);
+        console.log("我不会输出的，不要找了")
+    } catch (exception) {
+        console.log('catch exception, and the exception is: ');
+        console.log(exception);
+        console.log('end exception! ');
+    } finally {
+        console.log("不管发生不发生错误，我都会执行")
+    }
+    console.log("我try catch后面的代码")
+</script>
+</html>

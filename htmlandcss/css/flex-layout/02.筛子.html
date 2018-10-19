@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1 ~ 6 的筛子</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            
+        }
+
+        html,body {
+            background: #ddd;
+        }
+
+        .container-row {
+            width: 100%;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container-row > div {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+        }
+
+        .container-row > div > div:not(.box-container) {
+            width: 25px;
+            height: 25px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .box1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .box3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .box3 > div:nth-of-type(1) {
+            background-color: green;
+            align-self: flex-start;
+        }
+
+        .box3 > div:nth-of-type(3) {
+            background-color: green;
+            align-self: flex-end;
+        }
+
+        .box4 {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+        }
+
+        .box4 > .box-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .box4 > .box-container > div {
+            width: 25px;
+            height: 25px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .box5 {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .box5 > .box-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .box5 > div:not(.box-container) {
+            width: 25px;
+            height: 25px;
+            background: red;
+            border-radius: 50%;
+            align-self: center;
+        }
+
+        .box5 > .box-container > div {
+            width: 25px;
+            height: 25px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .box6 {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: stretch;
+        }
+
+        .box6 > .box-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .box6 > .box-container > div {
+            width: 25px;
+            height: 25px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-row">
+        <div class="box1">
+            <div></div>
+        </div>
+        <div class="box2">
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box3">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box4">
+            <div class="box-container">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box-container">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="box5">
+            <div class="box-container">
+                <div></div>
+                <div></div>
+            </div>
+            <div></div>
+            <div class="box-container">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="box6">
+            <div class="box-container">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box-container">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="box-container">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

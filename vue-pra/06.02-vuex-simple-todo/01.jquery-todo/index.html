@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery todo list</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <style>
+        .todolist span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <label for="todoinput">todo itme:</label>
+        <input type="text" id="todoinput">
+        <ul class="todolist"></ul>
+    </div>
+</body>
+<script>
+    $('#todoinput').on('keyup', function(event) {
+        if (event.keyCode === 13) {
+            $('.todolist').prepend(`<li>${event.target.value}&nbsp;&nbsp;&nbsp;&nbsp;<span>X</span></li>`)
+            $(this).val('')
+        }
+    })
+
+    $('.todolist').on('click', 'span', function(event) {
+        $(this).parent().remove()
+    })
+
+</script>
+</html>

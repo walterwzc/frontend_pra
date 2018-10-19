@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 100px;
+            height: 100px;
+            background: #ddd;
+        }
+        ui, li {
+            list-style: none;
+        }
+        .list span {
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="taskInput">
+    <ul class="list"></ul>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    const input = document.getElementsByClassName('taskInput')[0];
+    const oUl = $('.list');
+    $(input).on('keyup', function(event) {
+        if(event.keyCode === 13) {
+            oUl.append(`<li>${this.value}<span>X</span></li>`)
+            this.value = ''
+        }
+    })
+    $(oUl).on('click', 'span', function(event) {
+        // event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+        $(event.target).parents('li').remove()
+    })
+</script>
+</html>

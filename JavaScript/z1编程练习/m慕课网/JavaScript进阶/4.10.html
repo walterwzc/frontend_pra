@@ -1,0 +1,40 @@
+<!-- 
+在一个大学的编程选修课班里，我们得到了一组参加该班级的学生数据，分别是姓名、性别、年龄和年级，接下来呢，我们要利用JavaScript的知识挑出其中所有是大一的女生的的名字哦。 
+
+('小A','女',21,'大一'),  ('小B','男',23,'大三'),
+
+('小C','男',24,'大四'),  ('小D','女',21,'大一'),
+
+('小E','女',22,'大四'),  ('小F','男',21,'大一'),
+
+('小G','女',22,'大二'),  ('小H','女',20,'大三'),
+
+('小I','女',20,'大一'),  ('小J','男',20,'大三')
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生信息</title>
+</head>
+<body>
+    
+</body>
+<script>
+const studentInfo = ["('小A','男',21,'大一')", "('小B','男',23,'大三')", "('小C','男',24,'大四')", "('小D','女',21,'大一')"];
+
+var filteredInfo = studentInfo.filter(function(item, index) {
+    return item.split(',')[3].indexOf('大一') > 0;
+}).filter(function(item, index) {
+    return item.split(',')[1].indexOf('女') > 0;
+});
+
+console.log(filteredInfo);
+
+</script>
+</html>
+

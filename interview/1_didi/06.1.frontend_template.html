@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FrontEnd Template</title>
+</head>
+<body>
+    
+</body>
+<script>
+function tpl (template, data) {
+    for (let attr in data) {
+        const reg = new RegExp('\\{%' + attr + '%\\}', 'g');
+        template = template.replace(reg, data[attr]);
+    }
+    console.log(template);
+    return template;
+}
+
+
+const template = '<div class="{%className%}">{%name%}</div>';
+const data = {className: "head", name: "content"};
+
+const result = tpl(template, data);
+console.log('result is: ');
+console.log(result);
+</script>
+</html>

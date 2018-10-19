@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>nth</title>
+    <style>
+        .container > p:nth-child(5) {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>John</p>
+        <div>AAAAA</div>
+        <p>Karl</p>
+        <div>BBBB</div>
+        <p>Brandon</p>
+    </div>
+    <hr>
+    <div class="container">
+        <p>Glen</p>
+        <div>CCCC</div>
+        <p>Tane</p>
+        <div>DDDD</div>
+        <p>Ralph</p>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+<script>
+    console.log($('.container > div:nth-child(2)'));
+</script>
+</html>

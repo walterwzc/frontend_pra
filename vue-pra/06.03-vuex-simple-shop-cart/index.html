@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>simple shop cart</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+    <script src="https://unpkg.com/vuex"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Shopping Cart Example</h1>
+        <hr>
+        <h2>Products</h2>
+        <ul>
+            <li  v-for="(item, index) in products" :key="index">
+                <div>{{item.name}} - &#36;&nbsp;{{item.price}}</div>
+                <div><button v-on:click="addToCart(item)" v-bind:disabled="btnDisable(item)">Add to Cart</button></div>
+            </li>
+        </ul>
+        <hr>
+        <h2>Your Cart</h2>
+        <template v-if="buyList.length === 0"><strong>Please add some products to cart.</strong></template>
+        
+        <ul>
+            <li v-for="(item, index) in buyList" :key="index">
+                {{ item.name }} - &#36;&nbsp;{{item.price}} * {{item.count}}
+            </li>
+        </ul>
+
+        <div>Total: $ {{getTotalPrice}}</div>
+        <button>Checkout</button>
+    </div>
+</body>
+<script src="./index.js"></script>
+</html>

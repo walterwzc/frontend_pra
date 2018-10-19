@@ -1,0 +1,6 @@
+function* foo() {
+
+}
+
+
+Promise.resolve()

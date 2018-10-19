@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    .container {
+        margin-top: 2%;
+    }
+
+    img.ball {
+        margin-left: 3%;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="app">
+            <button @click="flag=!flag">击球</button>
+            <!-- 定义js的钩子函数 -->
+            <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+                <img v-show="flag" class="ball" :src="ball" alt="" width="30">
+            </transition>
+        </div>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                flag: false,
+                ball: 'https://upload-images.jianshu.io/upload_images/1864602-ec73f549171a6601.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'
+            },
+            methods: {
+                // el 表示要执行动画的那个DOM元素, 是原生的 js DOM 对象
+                beforeEnter(el) {
+                    // 设置动画开始之前的初始位置
+                    el.style.transform = "translate(0, 0)"
+                },
+                enter(el, done) {
+                    // 刷新动画效果
+                    el.offsetWidth;
+                    // 动画完成后的样式
+                    el.style.transform = "translate(550px, 350px)";
+                    // 动画的持续时间
+                    el.style.transition = "all 1s ease";
+                    // done 其实是 afterEnter() 的引用
+                    done();
+                },
+                afterEnter(el) {
+                    // 动画完成之后调用
+                    this.flag = !this.flag
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

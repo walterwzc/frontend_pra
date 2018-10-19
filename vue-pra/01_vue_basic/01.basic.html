@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div :title="message">{{message}}</div><br>
+        <input type="text" v-model="inputValue"><br>
+        <div v-if="isShow">show Message</div>
+        <div v-else>don't show message</div>
+        <ul>
+            <li v-for="course in courses">
+                {{course}}
+            </li>
+        </ul>
+
+        <my-component content="this is print in my component"></my-component>
+        <my-component content="AAAA"></my-component>
+        <my-component content="BBBB"></my-component>
+
+        <br><br>
+        <button @click="showMessage">show message</button>
+        <hr>
+        <!-- <div>Num1 is: {{num1}}</div>
+        <div>Num2 is: {{num2}}</div>
+        <div>Num Sum is: {{num1 + num2}}</div> -->
+        <a :href=`/abc/def/${stringInUrl}`>The part of URL is from Vue data</a>
+        <hr>
+        <br>
+        <a :href=`/abc/def/${stringInUrl}`>The part of URL is from Vue data</a>
+
+    </div>
+</body>
+<script src="01.basic.js"></script>
+</html>

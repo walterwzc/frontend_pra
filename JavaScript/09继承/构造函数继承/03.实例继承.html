@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03.实例继承</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Animal(name) {
+        this.name = name;
+        this.type = 'ann1'
+        this.sleep = function() {
+            console.log('sleep');
+        }
+    }
+
+    Animal.prototype.pname = 'prototype_name';
+
+    Animal.prototype.eat = function() {
+        console.log('eat' + " : " + this.name);
+    }
+
+    function Cat(name, age, love) {
+        const instance = new Animal(name);
+        instance.age = age;
+        instance.love = love;
+        return instance;
+    }
+
+    const c1 = new Cat('jiafeimao', 2, 'fish');
+    console.log(c1.pname);
+    c1.eat();
+
+    console.log(c1.name);
+    console.log(c1.age);
+    console.log(c1.love);
+
+    console.log(c1 instanceof Animal);
+    console.log(c1 instanceof Cat);
+</script>
+</html>

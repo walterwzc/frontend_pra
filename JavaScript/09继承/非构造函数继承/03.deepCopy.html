@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>deep copy</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const Animal = {
+        name: 'animal',
+        age: 12,
+        color: ['red', 'blue', 'green']
+    }
+
+    const Cat = {};
+
+    function deepCopy(fatherObj, sonObj) {
+        const obj = sonObj || {};
+
+        for (let attr in fatherObj) {
+            if (typeof fatherObj[attr] === 'object') {
+                sonObj[attr] = fatherObj[attr].constructor === Array ? [] : {};
+                deepCopy(fatherObj[attr], sonObj[attr]);
+            } else {
+                sonObj[attr] = fatherObj[attr];
+            }
+        }
+
+        return obj;
+    }
+
+    deepCopy(Animal, Cat);
+
+    Cat.color = ['white', 'black'];
+
+    console.log(Animal);
+
+    console.log('---------------');
+
+    console.log(Cat);
+
+</script>
+</html>

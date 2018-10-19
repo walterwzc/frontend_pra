@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js animation</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    Vue.component(
+        'fade',
+        {
+            props: ['show'],
+            template: ` 
+                <transition @before-enter="beforeEnter" @enter="enter"> 
+                    <slot v-if="show"></slot> 
+                </transition>
+            `,
+            methods: {
+                beforeEnter: function (el) {
+                    el.style.color = 'red'
+                },
+                enter: function (el, done) {
+                    setTimeout(() => {
+                        el.style.color = 'green'; 
+                        done();
+                    }, 2000)
+                }
+            },
+            mounted() {
+                console.log('mounted');
+                console.log(this.show);
+            },
+            updated() {
+                console.log('updated');
+                console.log(this.show);
+            }
+        }
+    );
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                show: true
+            }
+        },
+        template: `
+            <div>
+                <button @click="changeShow">toggle</button>
+                <fade :show="show">
+                    <div>Hello</div>    
+                </fade>
+            </div>
+        `,
+        methods: {
+            changeShow() {
+                console.log(this.show);
+                this.show = !this.show;
+            }
+        }
+    });
+</script>
+
+</html>

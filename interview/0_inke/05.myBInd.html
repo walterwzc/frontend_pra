@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>myBind</title>
+</head>
+<body>
+    <div id="box">box</div>
+</body>
+<script>
+    // 1. one way to use bind;
+    // const $ = document.querySelector.bind(document);
+    // console.log($('#box'));
+
+
+    // 2. use bind add parameters!
+    // var name = 'window'
+    // var obj = {
+    //     name: 'obj',
+    // }
+
+    // function print() {
+    //     console.log(arguments);
+    //     console.log(this.name + 'say: ' + arguments[0] + " : " + arguments[1]);
+    // }
+
+    // // print('hello');
+
+    // const bindPrint = print.bind(obj, 'this is from bind');
+    // bindPrint('bindPrint params');
+
+
+    // 3. 实现 bind
+    Function.prototype.myBind = function myBind() {
+        const aArguments = Array.from(arguments);
+        const context = aArguments.shift();
+        const params = aArguments;
+        const self = this;
+        return function() {
+            self.call(context, params.concat(Array.from(arguments)));
+        }
+    }
+
+    var name = 'window'
+    var obj = {
+        name: 'obj',
+    }
+
+    function print() {
+        console.log(arguments);
+        console.log(this.name + 'say: ' + [].slice.call(arguments));
+    }
+
+    const bindPrint = print.myBind(obj, 'this is from bind');
+    bindPrint('bindPrint params');
+</script>
+</html>
+
+

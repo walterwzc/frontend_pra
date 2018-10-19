@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>页面初始化</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <style>
+        @keyframes aslide {
+            0% {
+                margin-left: 10px;
+            }
+            100% {
+                margin-left: 100px;
+            }
+        }
+        .red {background-color: red; width: 100px; height: 100px;}
+        .apper { margin-top: 50px; }
+        .apper-active { margin-top: 100px; animation: aslide 4s; transition: all 3s;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <transition
+            appear-class="apper" 
+            appear-active-class="apper-active" 
+
+            
+            v-on:before-appear="customBeforeAppearHook"
+            v-on:appear="customAppearHook"
+            v-on:after-appear="customAfterAppearHook" >
+            <div class="red" v-show="show"></div>
+        </transition>
+        <button v-on:click="change">button</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            show: true
+        },
+        methods: {
+            change: function() {
+                this.show = !this.show;  
+                console.log('-----------click---------');
+            },
+            customBeforeAppearHook: function (el) {
+                console.log('customBeforeAppearHook:');
+            },
+            customAppearHook: function (el) {
+                console.log('customAppearHook:');
+                // done()
+            },
+            customAfterAppearHook: function (el) {
+                console.log('customAfterAppearHook:');
+            }
+        }
+    });
+</script>
+</html>

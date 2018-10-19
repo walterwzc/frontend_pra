@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transition</title>
+    <style>
+        .transition {
+            width: 200px;
+            height: 100px;
+            background: #ddd;
+            transition-property: transform, background-color;
+            transition-duration: 1s;
+            transition-timing-function: linear;
+        }
+
+        .transition:active {
+            /*  */
+            transform:  translateX(200px) translateY(400px)  rotate(180deg) scale(2);
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="transition"></div>
+</body>
+</html>

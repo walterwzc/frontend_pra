@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex basic</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 600px;
+            background: #ddd;
+            display: flex;
+            /* justify-content: space-evenly; */
+            /* justify-content: space-between; */
+            /* justify-content: space-around; */
+            align-items: stretch;
+            flex-wrap: wrap;
+            /* align-content: flex-start; */
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: rgb(65, 184, 240);
+            border: 1px solid red;
+        }
+
+        .box3 {
+            flex-grow: 4;
+        }
+
+        .box6 {
+            flex-shrink: 0;
+            background: rgb(103, 253, 33);
+        }
+
+        .box8 {
+            background: rgb(15, 11, 230);
+            flex-basis: 300px;
+        }
+
+        .box10 {
+            background: rgb(19, 228, 37);
+            align-self: center;
+        }
+
+        .box12 {
+            background: rgb(236, 23, 23);
+            align-self: flex-end;
+        }
+
+
+
+
+        .container2 {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
+        .app {
+            flex-grow: 1;
+            flex-basis: 200px;
+            width: 100px;
+            height: 100px;
+            background: rgb(112, 248, 94);
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" style="height: 200px;"></div>
+        <div class="box"></div>
+        <div class="box box3" style="height: 200px;"></div>
+        <div class="box"></div>
+        <div class="box" style="height: 200px;"></div>
+        <div class="box box6"></div>
+
+        <div class="box" style="height: 200px;"></div>
+        <div class="box box8"></div>
+        <div class="box" style="height: 200px;"></div>
+        <div class="box box10"></div>
+        <div class="box" style="height: 200px;"></div>
+        <div class="box box12"></div>
+
+        <div class="box" style="height: 200px;"></div>
+        <div class="box"></div>
+        <div class="box" style="height: 200px;"></div>
+        <div class="box"></div>
+        <div class="box" style="height: 200px;"></div>
+        <div class="box"></div>
+    </div>
+
+
+    <div class="container2" style="margin-top: 300px;background: #ddd; width: 100%; height: 500px;">
+        <div class="app"></div>
+        <div class="app"></div>
+        <div class="app"></div>
+        <div class="app"></div>
+    </div>
+</body>
+</html>

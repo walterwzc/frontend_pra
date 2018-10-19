@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03.indexEventListener</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+<script>
+    // const aLi = document.querySelectorAll('li');
+    // Array.from(aLi).forEach(function(item, index) {
+    //     item.addEventListener('click', function() {
+    //         console.log(item.innerHTML);
+    //     });
+    // }, false);
+
+    // 1
+    // const aLi = document.querySelectorAll('li');
+    // Array.from(aLi).forEach(function(item, index) {
+    //     item.addEventListener('click', function() {
+    //         console.log(index);
+    //     });
+    // }, false);
+
+    // 2
+    // 使用 let 可以灵巧的解决JS的闭包问题。
+    // const aLi = document.querySelectorAll('li');
+    // const liArr = Array.from(aLi);
+    // for (let i = 0; i < liArr.length; i++) {
+    //     liArr[i].onclick = function() {
+    //         console.log(i);
+    //     }
+    // }
+
+    // 3
+    const aLi = document.querySelectorAll('li');
+    const liArr = Array.from(aLi);
+    for (var i = 0; i < liArr.length; i++) {
+        (function(j) {
+            liArr[j].onclick = function() {
+                console.log(j);
+            }
+        })(i);        
+    }
+</script>
+</html>

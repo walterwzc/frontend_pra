@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js animation</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="toggle">显示和隐藏数据</button><br>
+        <transition
+            v-bind:css="false"
+            @before-enter="beforeEnter" 
+            @enter="enter" 
+            @after-enter="afterEnter"
+            @before-leave="beforeLeave"
+            @leave="leave"
+            @after-leave="afterLeave"
+        >
+            <div v-if="isshow">hello vuejs</div>
+        </transition>
+    </div>
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isshow: false
+        },
+        methods: {
+            toggle: function () {
+                this.isshow = !this.isshow;
+            },
+            beforeEnter: function (el) {
+                el.style.transform = "translate(100px, 0)";
+            },
+            enter: function (el, done) {
+                console.log('running');
+                console.log(el);
+                el.offsetWidth;
+                el.style.transform = "translate(0px, 0)";
+                el.style.transition = 'all 0.5s ease';
+                setTimeout(function() {
+                    done();
+                }, 510);
+                // done();
+            },
+            afterEnter: function (el) {
+                // this.isshow =  !this.isshow;
+                el.style.color = 'red';
+                console.log('afterEnter');
+            },
+            beforeLeave(el) {
+                el.style.transform = 'translate(0px, 0px);'
+            },
+            leave(el, done) {
+                // el.offsetWidth;
+                el.style.transform = 'translate(200px, 0)';
+                el.style.transition = 'all 0.5s ease';
+                setTimeout(function() {
+                    done();
+                }, 510);
+                // done();
+            },
+            afterLeave(el) {
+                console.log('afterLeave');
+            }
+        }
+    });
+</script>
+
+</html>
