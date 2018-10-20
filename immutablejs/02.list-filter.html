@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>list-filter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.2/immutable.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+
+var list = Immutable.List([ 'one', 'two', 'three', 'four', 'five', 'six' ]);
+
+console.log(list);
+
+var result = list.filter(function (item, index) {
+    console.log(item, index);
+	return index % 2 == 0
+});
+
+console.log(result.toJS());
+
+
+// console.log(result.toJS());
+// ["one", "three", "five"]
+</script>
+</html>
